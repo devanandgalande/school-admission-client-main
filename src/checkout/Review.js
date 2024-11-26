@@ -64,9 +64,9 @@ export default function ReviewForm({ handleChange, values }) {
       <Grid container sx={{ fontWeight: "300", fontSize: "small" }}>
         <ul type="disk">
           <li>
-            •	Submission of documents and payment of total fees can be completed from 1st of December 2024, Monday to Saturday, between 9:00 a.m. and 11:00 a.m.
+          Submission of documents and payment of total fees can be completed from 1st of December 2024, Monday to Saturday, between 9:00 a.m. and 11:00 a.m.
           </li>
-          <li>The form is valid only for the child whose name is entered by the school office.
+          <li>TDocuments to be Submitted :-
           </li>
           <li>This school is recognized unaided english medium school. There are no fee concessions.
             Fees are subject to rise.
