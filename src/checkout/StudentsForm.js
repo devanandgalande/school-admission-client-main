@@ -13,6 +13,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 import { Controller, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
@@ -21,28 +25,28 @@ import { yupResolver } from '@hookform/resolvers/yup';
 export default function StudentsForm({ handleChange, values, setValidateForm }) {
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required("Student's Name is required!")
-                            .max(20, "Student's Name must have 20 chars only!"),
+      .max(20, "Student's Name must have 20 chars only!"),
     middleName: Yup.string().required("Father's Name is required!")
-                            .max(20, "Father's Name must have 20 chars only!"),
+      .max(20, "Father's Name must have 20 chars only!"),
     lastName: Yup.string()
-                          // .required('Last Name is required!')
-                          .max(20, 'Last Name must have 20 chars only!'),
+      // .required('Last Name is required!')
+      .max(20, 'Last Name must have 20 chars only!'),
     placeOfBirth: Yup.string().required("Place of Birth is required!").max(30, 'Place must have 30 chars only!'),
     whatsapp: Yup.string().required("WhatsApp Number is required!")
-                          .matches("^([0-9]{10})$", 'WhatsApp No. must contain 10 digits!'),
+      .matches("^([0-9]{10})$", 'WhatsApp No. must contain 10 digits!'),
     dob: Yup.string()
-    .typeError('Date of Birth is required!')
-    .required('Date of Birth is required!'),
+      .typeError('Date of Birth is required!')
+      .required('Date of Birth is required!'),
 
     gender: Yup.string().required('Gender is required!'),
     address: Yup.string().required('Address is required!').max(150, 'Address Name must have 150 chars only!'),
     city: Yup.string().required('City is required!').max(30, 'City must have 30 chars only!'),
     state: Yup.string().required('State is required!').max(30, 'State must have 30 chars only!'),
     zip: Yup.string().required('Zip is required!')
-                      .matches("^(\\d{6,6})$",'Zip must contain 6 digits!'),
+      .matches("^(\\d{6,6})$", 'Zip must contain 6 digits!'),
     country: Yup.string().required('Country is required!').max(30, 'City must have 30 chars only!'),
     caste: Yup.string().required('Caste is required!').max(30, 'Caste must have 30 chars only!'),
-    subcaste: Yup.string().max(30, 'Sub-caste must have 30 chars only!'),
+    subcaste: Yup.string().required('Admission Class is required!'),
     // standard: Yup.string().required('This field is required'),
     // consent: Yup.bool().oneOf([true], 'Please check the consent')
     sibling1name: Yup.string().max(100, 'Sibling Name must be 100 chars long only!'),
@@ -71,7 +75,7 @@ export default function StudentsForm({ handleChange, values, setValidateForm }) 
           Student Details
         </Typography>
         <Grid container spacing={1} columnSpacing={4}>
-        <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={4}>
             <TextField
               // required
               id="lastName"
@@ -188,7 +192,7 @@ export default function StudentsForm({ handleChange, values, setValidateForm }) 
               )} />
             <FormHelperText error>{errors.gender?.message}</FormHelperText>
           </Grid>
-          <Grid item xs={12} sm={6} style={{paddingTop: 0}}>
+          <Grid item xs={12} sm={6} style={{ paddingTop: 0 }}>
             <TextField
               required
               id="caste"
@@ -203,20 +207,24 @@ export default function StudentsForm({ handleChange, values, setValidateForm }) 
               helperText={errors.caste?.message}
             />
           </Grid>
-          <Grid item xs={12} sm={6} style={{paddingTop: 0}}>
-            <TextField
-              required
-              id="Admission Looking for Class"
-              name="Admission Looking for Class"
-              label="Admission Looking for Class"
-              fullWidth
-              variant="standard"
-              onChange={handleChange('Admission Looking for Classsubcaste')}
-              defaultValue={values.subcaste}
-              {...register('suAdmission Looking for Classbcaste')}
-              error={Boolean(errors.subcaste)}
-              helperText={errors.subcaste?.message}
-            />
+          <Grid item xs={12} sm={6} style={{ paddingTop: 0 }}>
+            <FormControl fullWidth>
+              <InputLabel id="class-select-label">Admission Looking for Class</InputLabel>
+              <Select
+                labelId="class-select-label"
+                id="subcaste"
+                defaultValue={values.subcaste}
+                label="Admission Looking for Class"
+                variant="standard"
+                onChange={handleChange('subcaste')}
+                {...register('subcaste')}
+                >
+                <MenuItem value={"Nursery"}>Nursery</MenuItem>
+                <MenuItem value={"LKG"}>LKG</MenuItem>
+                <MenuItem value={"UKG"}>UKG</MenuItem>
+              </Select>
+              <FormHelperText error>{errors.subcaste?.message}</FormHelperText>
+            </FormControl>
           </Grid>
           <Grid item xs={12} sm={12} >
             <TextField
@@ -304,85 +312,85 @@ export default function StudentsForm({ handleChange, values, setValidateForm }) 
               Other Siblings in this School
             </Typography>
           </Grid>
-          <Grid item xs={12} style={{paddingTop: 0}}>
+          <Grid item xs={12} style={{ paddingTop: 0 }}>
             {/* <List disablePadding > */}
-              <ListItem style={{paddingTop: 0}}>
-                <ListItemAvatar sx={{ textAlign: "center" }}>
-                  {"1."}
-                </ListItemAvatar>
-                <Grid container item xs={12} columnSpacing={4}>
-                  <Grid item xs={10} sm={6}>
-                    <TextField
-                      name="sibling1name"
-                      label="Name"
-                      fullWidth
-                      size="small"
-                      variant="standard"
-                      // onChange={handleChange('sibling1name')}
-                      // defaultValue={values.sibling1name}
-                      onChange={handleChange('sibling1name')}
-                      defaultValue={values.sibling1name}
-                      {...register('sibling1name')}
-                      error={Boolean(errors.sibling1name)}
-                      helperText={errors.sibling1name?.message}
-                    />
-                  </Grid>
-                  <Grid item xs={10} sm={4}>
-                    <TextField
-                      id="std"
-                      name="sibling1std"
-                      label="Standard"
-                      fullWidth
-                      size="small"
-                      variant="standard"
-                      // onChange={handleChange('sibling1std')}
-                      // defaultValue={values.sibling1std}
-                      onChange={handleChange('sibling1std')}
-                      defaultValue={values.sibling1std}
-                      {...register('sibling1std')}
-                      error={Boolean(errors.sibling1std)}
-                      helperText={errors.sibling1std?.message}
-                    />
-                  </Grid>
+            <ListItem style={{ paddingTop: 0 }}>
+              <ListItemAvatar sx={{ textAlign: "center" }}>
+                {"1."}
+              </ListItemAvatar>
+              <Grid container item xs={12} columnSpacing={4}>
+                <Grid item xs={10} sm={6}>
+                  <TextField
+                    name="sibling1name"
+                    label="Name"
+                    fullWidth
+                    size="small"
+                    variant="standard"
+                    // onChange={handleChange('sibling1name')}
+                    // defaultValue={values.sibling1name}
+                    onChange={handleChange('sibling1name')}
+                    defaultValue={values.sibling1name}
+                    {...register('sibling1name')}
+                    error={Boolean(errors.sibling1name)}
+                    helperText={errors.sibling1name?.message}
+                  />
+                </Grid>
+                <Grid item xs={10} sm={4}>
+                  <TextField
+                    id="std"
+                    name="sibling1std"
+                    label="Standard"
+                    fullWidth
+                    size="small"
+                    variant="standard"
+                    // onChange={handleChange('sibling1std')}
+                    // defaultValue={values.sibling1std}
+                    onChange={handleChange('sibling1std')}
+                    defaultValue={values.sibling1std}
+                    {...register('sibling1std')}
+                    error={Boolean(errors.sibling1std)}
+                    helperText={errors.sibling1std?.message}
+                  />
+                </Grid>
 
+              </Grid>
+            </ListItem>
+            <ListItem style={{ paddingTop: 0 }}>
+              <ListItemAvatar sx={{ textAlign: "center" }}>
+                {"2."}
+              </ListItemAvatar>
+              <Grid container item xs={12} rowSpacing={1} columnSpacing={4}>
+                <Grid item xs={10} sm={6}>
+                  <TextField
+                    name="sibling2name"
+                    label="Name"
+                    fullWidth
+                    size="small"
+                    variant="standard"
+                    onChange={handleChange('sibling2name')}
+                    defaultValue={values.sibling2name}
+                    {...register('sibling2name')}
+                    error={Boolean(errors.sibling2name)}
+                    helperText={errors.sibling2name?.message}
+                  />
                 </Grid>
-              </ListItem>
-              <ListItem style={{paddingTop: 0}}>
-                <ListItemAvatar sx={{ textAlign: "center" }}>
-                  {"2."}
-                </ListItemAvatar>
-                <Grid container item xs={12} rowSpacing={1} columnSpacing={4}>
-                  <Grid item xs={10} sm={6}>
-                    <TextField
-                      name="sibling2name"
-                      label="Name"
-                      fullWidth
-                      size="small"
-                      variant="standard"
-                      onChange={handleChange('sibling2name')}
-                      defaultValue={values.sibling2name}
-                      {...register('sibling2name')}
-                      error={Boolean(errors.sibling2name)}
-                      helperText={errors.sibling2name?.message}
-                    />
-                  </Grid>
-                  <Grid item xs={10} sm={4}>
-                    <TextField
-                      id="sibling2std"
-                      name="sibling2std"
-                      label="Standard"
-                      fullWidth
-                      size="small"
-                      variant="standard"
-                      onChange={handleChange('sibling2std')}
-                      defaultValue={values.sibling2std}
-                      {...register('sibling2std')}
-                      error={Boolean(errors.sibling2std)}
-                      helperText={errors.sibling2std?.message}
-                    />
-                  </Grid>
+                <Grid item xs={10} sm={4}>
+                  <TextField
+                    id="sibling2std"
+                    name="sibling2std"
+                    label="Standard"
+                    fullWidth
+                    size="small"
+                    variant="standard"
+                    onChange={handleChange('sibling2std')}
+                    defaultValue={values.sibling2std}
+                    {...register('sibling2std')}
+                    error={Boolean(errors.sibling2std)}
+                    helperText={errors.sibling2std?.message}
+                  />
                 </Grid>
-              </ListItem>
+              </Grid>
+            </ListItem>
           </Grid>
           {/* <Grid item xs={12} sm={6}>
             <TextField
@@ -411,7 +419,7 @@ export default function StudentsForm({ handleChange, values, setValidateForm }) 
             />
           </Grid> */}
           <Grid item xs={12}>
-            <Divider variant="middle" color="grey" sx={{my: 1}}><Chip label="UNDERTAKING" />
+            <Divider variant="middle" color="grey" sx={{ my: 1 }}><Chip label="UNDERTAKING" />
             </Divider>
           </Grid>
           <Grid item xs={12}>
