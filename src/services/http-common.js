@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://weak-erin-alligator-vest.cyclic.app/api",
+  baseURL: "https://school-admission-server-main.onrender.com/api",
   // baseURL: process.env.SERVER_URL,
   headers: {
     "Content-type": "application/json"
