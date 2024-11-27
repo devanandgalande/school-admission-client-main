@@ -222,15 +222,7 @@ export default function Checkout() {
                     </Typography>
                     <ul type="disk">
                       <li>
-                        Acquiring online registration form does not guarantee admission in the school,
-                        the seats available are limited.
-                      </li>
-                      <li>Forms should be submitted on <strong>9th &amp; 10th Jan 2024 </strong> between 
-                      <strong> 8:30 AM to 12:30 PM</strong> at the school office.
-                      <ul id="cust_list_item1" className="cust_list_type">
-                        <li>Form No. SS0001 to SS0200 on Tuesday, 9th January, 2024</li>
-                        <li>Form No. N0201 and above on Wednesday, 10th January, 2024</li>
-                      </ul>
+                      Submission of documents can be done from 2nd of December 2024, Monday to Saturday, between 9:00 a.m. and 11:00 a.m.
                       </li>
                     </ul>
                     </Grid>
@@ -239,11 +231,14 @@ export default function Checkout() {
                       Submission
                     </Typography>
                     <ul type="disk">
-                      <li>Do pay Rs.500/- in cash at the school office.</li>
-                      <li>Print out of online registration form with parent's sign is mandatory.</li>
-                      <li>Original and Xerox copy of Birth Certificate (Original Birth Certificate will be given back).
-                      </li>
-                      <li>Christians should attach Baptism Certificate.</li>
+                      <li>Online admission form</li>
+                      <li>Recent family photo (4x5 cm) consisting of the student, father, and mother</li>
+                      <li>Municipal Birth Certificate of the student</li>
+                      <li>Proof of ID: Student’s Aadhar Card</li>
+                      <li>Proof of ID (Both Parents): Aadhar Card</li>
+                      <li>Proof of Residence: Telephone bill, electricity bill, passport, or rent agreement</li>
+                      <li>Baptism Certificate (applicable for Christian students)</li>
+                      <li>Student Caste Certificate (attach proof if applicable)</li>
                     </ul>
                   </Grid>
                   <Typography variant="h5" gutterBottom>
