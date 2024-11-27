@@ -220,8 +220,8 @@ export default function StudentsForm({ handleChange, values, setValidateForm }) 
                 {...register('subcaste')}
                 >
                 <MenuItem value={"Nursery"}>Nursery</MenuItem>
-                <MenuItem value={"LKG"}>LKG</MenuItem>
-                <MenuItem value={"UKG"}>UKG</MenuItem>
+                <MenuItem value={"Jr.KG"}>Jr.KG</MenuItem>
+                <MenuItem value={"Sr.KG"}>Sr.KG</MenuItem>
               </Select>
               <FormHelperText error>{errors.subcaste?.message}</FormHelperText>
             </FormControl>
